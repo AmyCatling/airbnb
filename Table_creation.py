@@ -13,21 +13,25 @@ class Table_create:
         self.table_name = table_name
         self.columns_info = column_info
         self.column_strings = []
+        self.table_string = ''
         self.set_column_strings()
         self.set_table_string()
-        #self.create_table()
+        self.create_table()
 
     def set_column_strings(self):
-        for column in self.column_info.keys():
+        for column in self.columns_info.keys():
             column_string = column
             column_string += ' '
-            column_string += column['Type']
-            if 'Primary_Key' in column.keys():
-                column_string+= ' IDENTITY PRIMARY KEY NOT NULL'
-            elif 'Foreign_Key' in column.keys():
+            column_string += self.columns_info[column]['type']
+
+            if 'Primary_Key' in self.columns_info[column].keys():
+                column_string += ' IDENTITY PRIMARY KEY NOT NULL'
+
+            elif 'Foreign_Key' in self.columns_info[column].keys():
                 column_string += ' FOREIGN KEY REFERENCES '
-                column_string += column['Foreign_Key']
-            elif 'Not_Null' in column.keys():
+                column_string += self.columns_info[column]['Foreign_Key']
+
+            elif 'Not_Null' in self.columns_info[column].keys():
                 column_string += ' NOT NULL'
             self.column_strings.append(column_string)
 
@@ -35,11 +39,10 @@ class Table_create:
         self.table_string = 'CREATE TABLE '
         self.table_string += self.table_name
         self.table_string += ' ('
-        for column in self.column_strings[-1]:
-            self.table_string += column
-            self.table_string += ', '
+        for column in self.column_strings[:-1]:
+            self.table_string += (column + ', ')
         self.table_string += self.column_strings[-1]
-        self.table_string += ')'
+        self.table_string += ');'
 
     def create_table(self):
         cnxn = pyodbc.connect(

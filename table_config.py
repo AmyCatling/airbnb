@@ -64,6 +64,6 @@ Listings['Availability_365'] = ast.literal_eval(config['Listings'].get('Availabi
 # print(Locations)
 # print(Reviews)
 # print(Reviewers)
-# print(Hosts)
+#print(Hosts)
 # print(Listings)
 

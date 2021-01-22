@@ -1,5 +1,6 @@
 import csv
-#import pandas as p
+import ast
+import pandas as pd
 
 
 class Airbnb:
@@ -23,19 +24,27 @@ class Airbnb:
 
 
 
+
     def transform_amenity(self):
         amenity_data = []
         amenity_index = self.listings_data[0].index('amenities')
         for listing in self.listings_data[1:]:
             amenity_data.append(listing[amenity_index])
+
+
         amenities = []
         for amenity_list in amenity_data:
-            print(amenity_list)
-            break
+            amenity_list = ast.literal_eval(amenity_list)
+            for amenity in amenity_list:
+                if amenity not in amenities:
+                    amenities.append(amenity)
+        self.amenities_df = pd.DataFrame(amenities)
+        print(self.amenities_df)
 
 
-    def _check_db_amenity(self):
-        pass
+
+    def _pull_amenity(self):
+
 
 
     def transform_locations(self):

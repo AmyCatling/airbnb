@@ -1,4 +1,5 @@
 import csv
+#import pandas as p
 
 
 class Airbnb:
@@ -13,7 +14,7 @@ class Airbnb:
         data = open(listing_file, encoding='utf-8')
         listing = csv.reader(data, delimiter=",")
         for line in listing:
-            self.listings.append(line)
+            self.listings_data.append(line)
         data2 = open(listing_file, encoding='utf-8')
         reviews = csv.reader(data2, delimiter=',')
         for line in reviews:
@@ -23,7 +24,14 @@ class Airbnb:
 
 
     def transform_amenity(self):
-        pass
+        amenity_data = []
+        amenity_index = self.listings_data[0].index('amenities')
+        for listing in self.listings_data[1:]:
+            amenity_data.append(listing[amenity_index])
+        amenities = []
+        for amenity_list in amenity_data:
+            print(amenity_list)
+            break
 
 
     def _check_db_amenity(self):
@@ -76,3 +84,8 @@ class Airbnb:
 
     def _check_db_list_amen_junction(self):
         pass
+
+
+a = Airbnb('edinburgh_listings.csv', 'edinburgh_reviews.csv')
+
+a.transform_amenity()

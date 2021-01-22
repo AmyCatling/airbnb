@@ -1,8 +1,5 @@
 import pyodbc
 
-# cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-# cursor = cnxn.cursor()
-
 
 class Table_create:
     def __init__(self, table_name, column_info):
@@ -10,13 +7,20 @@ class Table_create:
         self.database = 'Airbnb'
         self.username = 'SA'
         self.password = 'Passw0rd2018'
+        # self.cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+self.server+';DATABASE='\
+        #                             +self.database+';UID='+self.username+';PWD='+self.password)
+        # self.cursor = self.cnxn.cursor()
         self.table_name = table_name
         self.columns_info = column_info
         self.column_strings = []
         self.table_string = ''
+        # self.create_database()
         self.set_column_strings()
         self.set_table_string()
         self.create_table()
+
+    # def create_database(self):
+    #     database = self.cursor.execute(f"CREATE DATABASE {self.database}")
 
     def set_column_strings(self):
         for column in self.columns_info.keys():
@@ -44,12 +48,17 @@ class Table_create:
         self.table_string += self.column_strings[-1]
         self.table_string += ');'
 
+
     def create_table(self):
+        # cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + self.server + ';DATABASE=' \
+        #                            + self.database + ';UID=' + self.username + ';PWD=' + self.password)
+        # cursor = self.cnxn.cursor()
+
         cnxn = pyodbc.connect(
-            'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+            'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + self.server + ';DATABASE=' + self.database + ';UID=' + self.username + ';PWD=' + self.password)
         cursor = cnxn.cursor()
         cursor.execute(self.table_string)
-
+        cnxn.commit()
 
 
 

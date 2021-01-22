@@ -1,7 +1,6 @@
 from table_config import Amenities, Listings, Reviews, Reviewers, Hosts, Locations, List_amen_junction
 from Table_creation import Table_create
 
-
 amenity_table = Table_create('Amenities', Amenities)
 
 Locations_table = Table_create('Locations', Locations)

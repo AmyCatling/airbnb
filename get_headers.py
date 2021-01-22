@@ -16,8 +16,8 @@ def find_info_header(header, result_num=20):
 
 
 #print(find_info_header('bathrooms_text', 50))
-
-#print(listings[0])
+listings[0].sort()
+print(listings[0])
 
 def find_null_values():
     null_dict = {}
@@ -30,9 +30,3 @@ def find_null_values():
     return null_dict
 
 
-
-print(len(listings))
-print(find_null_values())
-
-
-print(find_info_header('neighbourhood_cleansed', 100))

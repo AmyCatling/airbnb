@@ -21,16 +21,11 @@ class Airbnb:
         for line in reviews:
             self.reviews_data.append(line)
 
-
-
-
-
     def transform_amenity(self):
         amenity_data = []
         amenity_index = self.listings_data[0].index('amenities')
         for listing in self.listings_data[1:]:
             amenity_data.append(listing[amenity_index])
-
 
         amenities = []
         for amenity_list in amenity_data:
@@ -41,39 +36,28 @@ class Airbnb:
         self.amenities_df = pd.DataFrame(amenities)
         print(self.amenities_df)
 
-
-
     def _pull_amenity(self):
-
-
 
     def transform_locations(self):
         pass
 
-
     def _check_db_locations(self):
         pass
-
 
     def transform_reviewers(self):
         pass
 
-
     def _check_db_reviewers(self):
         pass
-
 
     def transform_hosts(self):
         pass
 
-
     def _check_db_hosts(self):
         pass
 
-
     def transform_reviews(self):
         pass
-
 
     def _check_db_reviews(self):
         pass

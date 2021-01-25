@@ -2,11 +2,11 @@ import pyodbc
 
 
 class Table_create:
-    def __init__(self, table_name, column_info):
-        self.server = 'localhost,1433'
-        self.database = 'Airbnb'
-        self.username = 'SA'
-        self.password = 'Passw0rd2018'
+    def __init__(self, table_name, column_info, server_info):
+        self.server = server_info['server']
+        self.database = server_info['database']
+        self.username = server_info['username']
+        self.password = server_info['password']
         # self.cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+self.server+';DATABASE='\
         #                             +self.database+';UID='+self.username+';PWD='+self.password)
         # self.cursor = self.cnxn.cursor()

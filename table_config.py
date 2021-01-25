@@ -20,7 +20,7 @@ Locations['Area'] = ast.literal_eval(config['Locations'].get('Area'))
 Reviews = {}
 Reviews['Review_ID'] = ast.literal_eval(config['Reviews'].get('Review_ID'))
 Reviews['Reviewer_ID'] = ast.literal_eval(config['Reviews'].get('Reviewer_ID'))
-Reviews['Location_ID'] = ast.literal_eval(config['Reviews'].get('Location_ID'))
+Reviews['Listing_ID'] = ast.literal_eval(config['Reviews'].get('Listing_ID'))
 Reviews['Comments'] = ast.literal_eval(config['Reviews'].get('Comments'))
 
 Reviewers = {}
@@ -33,11 +33,10 @@ Hosts['Host_Name'] = ast.literal_eval(config['Hosts'].get('Host_Name'))
 Hosts['Host_Since'] = ast.literal_eval(config['Hosts'].get('Host_Since'))
 Hosts['Host_Location'] = ast.literal_eval(config['Hosts'].get('Host_Location'))
 Hosts['Host_Response_Time'] = ast.literal_eval(config['Hosts'].get('Host_Response_Time'))
-Hosts['Host_Response_Rate'] = ast.literal_eval(config['Hosts'].get('Host_Response_Rate'))
 Hosts['Host_Acceptance_Rate'] = ast.literal_eval(config['Hosts'].get('Host_Acceptance_Rate'))
 Hosts['Host_Is_Superhost'] = ast.literal_eval(config['Hosts'].get('Host_Is_Superhost'))
 Hosts['Host_Listings_Count'] = ast.literal_eval(config['Hosts'].get('Host_Listings_Count'))
-Hosts['Host_Total_Listings_Count'] = ast.literal_eval(config['Hosts'].get('Host_Total_Listings_Count'))
+
 
 Listings = {}
 Listings['Listing_ID'] = ast.literal_eval(config['Listings'].get('Listing_ID'))
